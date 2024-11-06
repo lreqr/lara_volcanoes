@@ -13,6 +13,14 @@ class VolcanoesController extends Controller
      */
     public function index()
     {
+        return view('welcome');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function store()
+    {
         $respond = Http::post('https://volcanoes.usgs.gov/hans-public/api/volcano/getMonitoredVolcanoes')->json();
         $volcano_vnums = array_column($respond, 'vnum');
         $volcano_ids = [];
@@ -26,30 +34,16 @@ class VolcanoesController extends Controller
             if (!empty($volcano_data)){
                 $volcano_data['volcano_id'] = (int)$volcano_data['vnum'];
                 $volcano_data['title'] = $volcano_data['volcano_name'];
-                unset($volcano_data['vnum'], $volcano_data['volcano_name']);
+                $volcano_data['description'] = $volcano_data['boilerplate'];
+                unset($volcano_data['vnum'], $volcano_data['volcano_name'], $volcano_data['boilerplate']);
                 $volcano = new Volcanoes($volcano_data);
-
-                $volcano->save();
-                dd($volcano);
+                if(!Volcanoes::find($volcano_data['volcano_id'])) {
+                    $volcano->save();
+                    dump($volcano->volcano_id);
+                }
 
             }
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

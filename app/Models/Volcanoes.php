@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Volcanoes extends Model
 {
+
+    protected $primaryKey = 'volcano_id'; // указываем новое имя первичного ключа
     /**
      * The attributes that are mass assignable.
      *
@@ -14,6 +16,7 @@ class Volcanoes extends Model
     protected $fillable = [
         'volcano_id',
         'title',
+        'description',
         'latitude',
         'longitude',
         'elevation_meters',
