@@ -1,4 +1,5 @@
 <x-layout>
+
     <div class="row">
         @foreach($volcanoes as $volcano)
             <x-volcano-card :volcano="$volcano">
