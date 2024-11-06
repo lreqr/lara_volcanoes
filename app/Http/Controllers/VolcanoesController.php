@@ -13,7 +13,8 @@ class VolcanoesController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $volcanoes = Volcanoes::all()->toArray();
+        return view('welcome', ['volcanoes' => $volcanoes]);
     }
 
     /**
