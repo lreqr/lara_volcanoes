@@ -8,11 +8,7 @@ class Volcanoes extends Model
 {
 
     protected $primaryKey = 'volcano_id'; // указываем новое имя первичного ключа
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var $fillable array
-     */
+
     protected $fillable = [
         'volcano_id',
         'title',

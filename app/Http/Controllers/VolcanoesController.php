@@ -14,7 +14,7 @@ class VolcanoesController extends Controller
     public function index()
     {
         $volcanoes = Volcanoes::all()->toArray();
-        return view('welcome', ['volcanoes' => $volcanoes]);
+        return view('pages.welcome', ['volcanoes' => $volcanoes]);
     }
 
     /**
@@ -50,9 +50,9 @@ class VolcanoesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Volcanoes $vocanoes)
+    public function show(Volcanoes $volcano)
     {
-        //
+        return view('pages.show', ['volcano' => $volcano->toArray()]);
     }
 
     /**

@@ -3,6 +3,6 @@
     <div class="card-body">
         <h5 class="card-title">{{$volcano['title']}}</h5>
         <p class="card-text">{{$volcano['description']}}</p>
-        <a href="{{$volcano['volcano_id']}}" class="btn btn-primary">Go somewhere</a>
+        <a href="{{route('volcanoes.show', $volcano['volcano_id'])}}" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>
